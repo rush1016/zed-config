@@ -1,0 +1,110 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-b": "branches::OpenRecent",
+      "cmd-r": "projects::OpenRecent",
+      "cmd-s": "workspace::SaveWithoutFormat"
+    }
+  },
+  
+  // Editor Tab Navigation
+  {
+    "context": "Editor",
+    "bindings": {
+      // Navigate through panes in editor groups
+      "ctrl-shift-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-shift-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-shift-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-shift-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+
+  // Suggestions Navigation
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrev",
+      "enter": "editor::Newline"
+    }
+  },
+
+  // Menu Navigation
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrev",
+      "cmd-shift-g": "branches::OpenRecent"
+    }
+  },
+
+  // Toggle Project Panel
+  {
+    "bindings": {
+      "ctrl-n": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-n": "workspace::ToggleRightDock"
+    }
+  },
+
+  // VIM keybinds
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "shift-j": "pane::ActivatePrevItem",
+      "shift-k": "pane::ActivateNextItem",
+      "g v": "editor::GoToDefinitionSplit",
+      
+      // <leader> = spacebar
+      "space e": "tab_switcher::Toggle",
+      "space f": "pane::DeploySearch",
+      "space b": "branches::OpenRecent",
+      "space r": "projects::OpenRecent",
+      "space v": "pane::SplitRight",
+      
+      // Find symbols and methods
+      "space o": "outline::Toggle",
+      "space t": "project_symbols::Toggle",
+      
+      // Layout controls
+      "space m": "editor::ToggleTabBar",
+      "space c": "workspace::ToggleCenteredLayout",
+      
+      // Manipulating surround symbols
+      "m s": ["vim::PushOperator", { "AddSurrounds": {} }],
+      "m r": ["vim::PushOperator", { "ChangeSurrounds": {} }],
+      "m d": ["vim::PushOperator", "DeleteSurrounds"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "k": "menu::SelectPrev",
+      "j": "menu::SelectNext",
+      "space": "menu::Confirm",
+      "x": "tab_switcher::CloseSelectedItem",
+      "c": "menu::Cancel",
+
+      "cmd-backspace": "tab_switcher::CloseSelectedItem"
+    }
+  }
+]
